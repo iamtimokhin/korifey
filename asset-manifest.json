@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e6c13ad2.css",
-    "main.js": "/static/js/main.19c82ebb.js",
+    "main.js": "/static/js/main.ee24b902.js",
     "static/js/453.209e6d3a.chunk.js": "/static/js/453.209e6d3a.chunk.js",
     "static/media/PhilippTimokhin.jpg": "/static/media/PhilippTimokhin.5e3a03b13265f710c181.jpg",
     "static/media/Burceva_Natalya_Pavlovna.png": "/static/media/Burceva_Natalya_Pavlovna.1fdcc75980e38caaedd8.png",
@@ -20,11 +20,11 @@
     "index.html": "/index.html",
     "static/media/verify.svg": "/static/media/verify.b9d2d9ae73e9d4b6feb453df0ec73424.svg",
     "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
-    "main.19c82ebb.js.map": "/static/js/main.19c82ebb.js.map",
+    "main.ee24b902.js.map": "/static/js/main.ee24b902.js.map",
     "453.209e6d3a.chunk.js.map": "/static/js/453.209e6d3a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.19c82ebb.js"
+    "static/js/main.ee24b902.js"
   ]
 }
