@@ -37,7 +37,7 @@ const PreloaderLetter = () => {
           opacity: [1, 0.7, 1],
         }}
         transition={{
-          duration: 1.5,
+          duration: 1, // синхронизируем с лоадингом 1000ms
           repeat: Infinity,
           ease: "easeInOut",
         }}

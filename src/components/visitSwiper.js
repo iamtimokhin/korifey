@@ -1,12 +1,11 @@
-import React, { useContext, useMemo, useState, useEffect } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import {
   SwipeableDrawer,
   Box,
   IconButton,
   Typography,
   Button,
-  Snackbar,
-  Alert,
+  CircularProgress,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import themes from "../data/colors";
@@ -21,24 +20,14 @@ const VisitSwiper = React.memo(function VisitSwiper({
   link,
   status,
   avito,
-  site,
+  site, // ссылка на визитку партнера
 }) {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
 
   const [startY, setStartY] = useState(null);
-  const [showNotification, setShowNotification] = useState(false);
-
-  // Авто-уведомление через 1 секунду после открытия
-  useEffect(() => {
-    let timer;
-    if (open) {
-      timer = setTimeout(() => setShowNotification(true), 1000);
-    } else {
-      setShowNotification(false);
-    }
-    return () => clearTimeout(timer);
-  }, [open]);
+  const [iframeOpen, setIframeOpen] = useState(false);
+  const [iframeLoading, setIframeLoading] = useState(true);
 
   const handleTouchStart = (e) => setStartY(e.touches[0].clientY);
   const handleTouchEnd = (e) => {
@@ -46,6 +35,19 @@ const VisitSwiper = React.memo(function VisitSwiper({
     const endY = e.changedTouches[0].clientY;
     if (endY - startY > 100) onClose();
     setStartY(null);
+  };
+
+  const buttonStyle = {
+    width: "80%",
+    maxWidth: 320,
+    minHeight: 48,
+    background: colors.contacts.buttonColor,
+    color: colors.contacts.color,
+    fontWeight: "bold",
+    textTransform: "none",
+    borderRadius: 3,
+    boxShadow: colors.contacts.boxShadow,
+    mb: 1,
   };
 
   return (
@@ -108,7 +110,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Аватар с пульсирующей тенью */}
+          {/* Аватар */}
           <Box
             sx={{
               width: 180,
@@ -118,7 +120,6 @@ const VisitSwiper = React.memo(function VisitSwiper({
               mb: 2,
             }}
           >
-            {/* Пульсирующая тень */}
             <Box
               sx={{
                 position: "absolute",
@@ -132,8 +133,6 @@ const VisitSwiper = React.memo(function VisitSwiper({
                 zIndex: 0,
               }}
             />
-
-            {/* Сам аватар */}
             <Box
               component="img"
               src={image}
@@ -149,7 +148,6 @@ const VisitSwiper = React.memo(function VisitSwiper({
                 zIndex: 1,
               }}
             />
-
             <style>{`
               @keyframes pulseShadow {
                 0% { box-shadow: 0 0 0 0 rgba(39,135,245,0.7); }
@@ -159,7 +157,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
             `}</style>
           </Box>
 
-          {/* имя */}
+          {/* Имя */}
           <Typography
             variant="h6"
             color={colors.profileHeader.typographyColor}
@@ -169,7 +167,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
             {name}
           </Typography>
 
-          {/* описание */}
+          {/* Статус */}
           {status && (
             <Typography
               variant="body2"
@@ -179,119 +177,78 @@ const VisitSwiper = React.memo(function VisitSwiper({
             </Typography>
           )}
 
-          {/* кнопки */}
+          {/* Кнопки */}
           {link && (
-            <Button
-              href={link}
-              target="_blank"
-              sx={{
-                width: "80%",
-                maxWidth: 320,
-                minHeight: 48,
-                background: colors.contacts.buttonColor,
-                color: colors.contacts.color,
-                fontWeight: "bold",
-                textTransform: "none",
-                borderRadius: 3,
-                boxShadow: colors.contacts.boxShadow,
-                mb: 1,
-              }}
-            >
+            <Button href={link} target="_blank" sx={buttonStyle}>
               Написать в Телеграм
             </Button>
           )}
           {avito && (
-            <Button
-              href={avito}
-              target="_blank"
-              sx={{
-                width: "80%",
-                maxWidth: 320,
-                minHeight: 48,
-                background: colors.contacts.buttonColor,
-                color: colors.contacts.color,
-                fontWeight: "bold",
-                textTransform: "none",
-                borderRadius: 3,
-                boxShadow: colors.contacts.boxShadow,
-                mb: 1,
-              }}
-            >
+            <Button href={avito} target="_blank" sx={buttonStyle}>
               Перейти на Avito
             </Button>
           )}
           {site && (
-            <Button
-              href={site}
-              target="_blank"
-              sx={{
-                width: "80%",
-                maxWidth: 320,
-                minHeight: 48,
-                background: colors.contacts.buttonColor,
-                color: colors.contacts.color,
-                fontWeight: "bold",
-                textTransform: "none",
-                borderRadius: 3,
-                boxShadow: colors.contacts.boxShadow,
-                mb: 1,
-              }}
-            >
+            <Button onClick={() => setIframeOpen(true)} sx={buttonStyle}>
               Перейти в визитку
             </Button>
           )}
         </Box>
       </SwipeableDrawer>
 
-      {/* Центровое уведомление */}
-      <Snackbar
-        open={showNotification}
-        autoHideDuration={5000}
-        onClose={() => setShowNotification(false)}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        sx={{ zIndex: 1600 }}
-      >
-        <Alert
-          icon={false}
-          onClick={() => setShowNotification(false)}
+      {/* iframe для визитки с прогрессом */}
+      {iframeOpen && (
+        <Box
           sx={{
-            width: "auto",
-            maxWidth: 300,
-            backgroundColor: "rgba(0,0,0,0.85)",
-            color: "#fff",
-            borderRadius: 3,
-            boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
-            textAlign: "center",
-            fontWeight: "bold",
-            p: 2,
-            cursor: "pointer",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0,0,0,0.9)",
+            zIndex: 2000,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Box
-            component="span"
+          <IconButton
+            onClick={() => setIframeOpen(false)}
             sx={{
-              display: "inline-block",
-              mr: 1,
-              transformOrigin: "70% 70%",
-              animation: "wave 1.5s infinite",
-              "@keyframes wave": {
-                "0%": { transform: "rotate(0deg)" },
-                "15%": { transform: "rotate(14deg)" },
-                "30%": { transform: "rotate(-8deg)" },
-                "40%": { transform: "rotate(14deg)" },
-                "50%": { transform: "rotate(-4deg)" },
-                "60%": { transform: "rotate(10deg)" },
-                "70%": { transform: "rotate(0deg)" },
-                "100%": { transform: "rotate(0deg)" },
-              },
+              position: "absolute",
+              top: 16,
+              right: 16,
+              color: "white",
+              backgroundColor: "rgba(0,0,0,0.3)",
+              "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
+              zIndex: 2100,
             }}
           >
-            👋
-          </Box>
-          Привет! Я Филипп Тимохин — разработчик визиток и надежный продавец на
-          Авито.
-        </Alert>
-      </Snackbar>
+            <CloseIcon />
+          </IconButton>
+
+          {iframeLoading && (
+            <CircularProgress
+              size={64}
+              sx={{ color: colors.contacts.color, mb: 2 }}
+            />
+          )}
+
+          <iframe
+            src={site}
+            title="Partner Visit"
+            style={{
+              flex: 1,
+              border: "none",
+              width: "100%",
+              height: "100%",
+              display: iframeLoading ? "none" : "block",
+            }}
+            onLoad={() => setIframeLoading(false)}
+          />
+        </Box>
+      )}
     </>
   );
 });

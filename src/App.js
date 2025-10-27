@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   BackgroundTemplate,
@@ -9,9 +9,7 @@ import {
   Advantages,
   Contacts,
   ProfileFooter,
-  Preloader,
   ThemeButton,
-  CenterAlert,
   YandexMapEmbed,
   ScrollToTopFab,
   ScrollProgress,
@@ -21,6 +19,7 @@ import profileData from "./data/profileData";
 import footerData from "./data/footerData";
 import themes from "./data/colors";
 import ThemeContext from "./context/context";
+import { motion } from "framer-motion";
 
 export default function App() {
   const [currentTheme, setCurrentTheme] = useState(() => {
@@ -28,40 +27,20 @@ export default function App() {
     return saved && themes[saved] ? saved : Object.keys(themes)[0];
   });
 
-  const [loading, setLoading] = useState(true);
-  const [showAlert, setShowAlert] = useState(false);
-
   useEffect(() => {
     localStorage.setItem("theme", currentTheme);
   }, [currentTheme]);
 
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    if (!loading) {
-      setShowAlert(true);
-      const timer = setTimeout(() => setShowAlert(false), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [loading]);
-
   return (
     <ThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
       <ScrollProgress />
-      {loading ? (
-        <Preloader />
-      ) : (
-        <BackgroundTemplate>
+      <BackgroundTemplate>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Card>
-            <CenterAlert
-              show={showAlert}
-              message="Добро пожаловать в Центр недвижимости Корифей! Мы поможем вам найти идеальное жильё без лишних забот."
-              onClose={() => setShowAlert(false)}
-            />
-
             <ProfileHeader {...profileData} />
             <DividerGradient direction="right" />
             <Content>
@@ -81,8 +60,8 @@ export default function App() {
             </Content>
             <ScrollToTopFab />
           </Card>
-        </BackgroundTemplate>
-      )}
+        </motion.div>
+      </BackgroundTemplate>
     </ThemeContext.Provider>
   );
 }
