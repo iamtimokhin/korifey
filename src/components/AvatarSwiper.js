@@ -8,10 +8,10 @@ const AvatarSwiper = React.memo(function AvatarSwiper({
   open,
   onClose,
   onOpen,
-  image,
   name,
   status,
   Icon,
+  subImage,
 }) {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
@@ -113,7 +113,7 @@ const AvatarSwiper = React.memo(function AvatarSwiper({
           {/* Сам аватар */}
           <Box
             component="img"
-            src={image}
+            src={subImage}
             alt={`${name} avatar`}
             sx={{
               width: "100%",

@@ -1,14 +1,14 @@
 import React, { useState, useContext, useMemo } from "react";
 import { Button, IconButton, Box, SwipeableDrawer } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import QrCodeIcon from "@mui/icons-material/QrCode"; // <-- импорт иконки
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import MailIcon from "@mui/icons-material/Mail";
 import ThemeContext from "../context/context";
 import themes from "../data/colors";
 import ThemedCircularProgress from "./ThemedCircularProgress";
+import QRSwiper from "./QRSwiper"; // импорт нового свайпера
 
 export default function ShareButton() {
   const { currentTheme } = useContext(ThemeContext);
@@ -17,6 +17,7 @@ export default function ShareButton() {
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [qrOpen, setQrOpen] = useState(false);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(url);
@@ -40,8 +41,6 @@ export default function ShareButton() {
     borderRadius: 3,
     py: 1.2,
     boxShadow: colors.contacts.boxShadow,
-    "&:hover": { background: colors.contacts.buttonColor },
-    "&:active": { transform: "scale(0.97)" },
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -67,7 +66,7 @@ export default function ShareButton() {
         </Button>
       </Box>
 
-      {/* Swipeable Drawer */}
+      {/* Swipeable Drawer с кнопками шаринга */}
       <SwipeableDrawer
         anchor="bottom"
         open={open}
@@ -105,7 +104,7 @@ export default function ShareButton() {
           <CloseIcon />
         </IconButton>
 
-        {/* Пульсирующая TelegramIcon */}
+        {/* Пульсирующая иконка */}
         <Box
           sx={{
             mb: 3,
@@ -121,7 +120,7 @@ export default function ShareButton() {
             sx={{
               fontSize: 64,
               color: colors.profileHeader.typographyColor,
-              animation: "pulse 1.5s ease-in-out infinite", // если пульсирующая анимация нужна
+              animation: "pulse 1.5s ease-in-out infinite",
             }}
           />
         </Box>
@@ -133,7 +132,7 @@ export default function ShareButton() {
           }
         `}</style>
 
-        {/* Кнопки шаринга в стиле Contacts */}
+        {/* Кнопки шаринга */}
         <Box
           sx={{
             width: "100%",
@@ -176,27 +175,6 @@ export default function ShareButton() {
           </Button>
 
           <Button
-            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
-            )}`}
-            target="_blank"
-            fullWidth
-            sx={buttonStyle}
-            startIcon={<FacebookIcon sx={{ fontSize: iconSize }} />}
-          >
-            Facebook
-          </Button>
-
-          <Button
-            href={`mailto:?subject=Ссылка&body=${encodeURIComponent(url)}`}
-            fullWidth
-            sx={buttonStyle}
-            startIcon={<MailIcon sx={{ fontSize: iconSize }} />}
-          >
-            Email
-          </Button>
-
-          <Button
             onClick={handleCopy}
             fullWidth
             sx={buttonStyle}
@@ -204,8 +182,21 @@ export default function ShareButton() {
           >
             Скопировать ссылку
           </Button>
+
+          {/* Кнопка для QR-кода */}
+          <Button
+            onClick={() => setQrOpen(true)}
+            fullWidth
+            sx={buttonStyle} // стиль одинаковый со всеми кнопками
+            startIcon={<QrCodeIcon sx={{ fontSize: iconSize }} />} // иконка слева
+          >
+            Показать QR-код
+          </Button>
         </Box>
       </SwipeableDrawer>
+
+      {/* QRSwiperFull на весь экран */}
+      <QRSwiper open={qrOpen} onClose={() => setQrOpen(false)} url={url} />
     </>
   );
 }

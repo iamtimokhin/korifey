@@ -8,6 +8,7 @@ const footerData = {
   image: AvatarImg,
   link: "https://t.me/kiton028",
   avito: "https://www.avito.ru/brands/timokhin",
+  site: "https://timzone.ru",
 };
 
 export default footerData;

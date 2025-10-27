@@ -42,7 +42,7 @@ const PreloaderLetter = () => {
           ease: "easeInOut",
         }}
       >
-        Ф
+        К
       </motion.span>
     </motion.div>
   );

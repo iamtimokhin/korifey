@@ -1,8 +1,8 @@
 const badges = [
-  { value: "900", label: "Отзывов" },
-  { value: "2900", label: "Подписчиков" },
-  { value: "1700", label: "Продаж" },
-  { value: "700", label: "Товаров" },
+  { value: "15", label: "Опыт работы" },
+  { value: "5000", label: "Сделок" },
+  { value: "10", label: "Сотрудников" },
+  { value: "200", label: "Партнёров" },
 ];
 
 export default badges;

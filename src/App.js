@@ -10,12 +10,12 @@ import {
   Contacts,
   ProfileFooter,
   Preloader,
-  Gallery,
   ThemeButton,
   CenterAlert,
   YandexMapEmbed,
   ScrollToTopFab,
   ScrollProgress,
+  PartnersSection,
 } from "./components";
 import profileData from "./data/profileData";
 import footerData from "./data/footerData";
@@ -58,7 +58,7 @@ export default function App() {
           <Card>
             <CenterAlert
               show={showAlert}
-              message="Меня зовут Тимохин Филипп, и я рад, что вы заглянули на мою визитку"
+              message="Добро пожаловать в Центр недвижимости Корифей! Мы поможем вам найти идеальное жильё без лишних забот."
               onClose={() => setShowAlert(false)}
             />
 
@@ -69,7 +69,7 @@ export default function App() {
               <DividerGradient direction="left" />
               <Advantages />
               <DividerGradient direction="right" />
-              <Gallery />
+              <PartnersSection />
               <DividerGradient direction="left" />
               <Contacts />
               <DividerGradient direction="left" />

@@ -10,7 +10,7 @@ import themes from "../data/colors";
 import AvatarSwiper from "./AvatarSwiper";
 import ThemeContext from "../context/context";
 
-function ProfileHeader({ image, name, icon: Icon, status }) {
+function ProfileHeader({ image, name, icon: Icon, status, subImage }) {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   const [open, setOpen] = useState(false);
@@ -85,6 +85,7 @@ function ProfileHeader({ image, name, icon: Icon, status }) {
         onOpen={handleOpen}
         open={open}
         image={image}
+        subImage={subImage}
         name={name}
         status={status}
         Icon={Icon}

@@ -50,23 +50,10 @@ END:VCARD`;
           borderRadius: 3,
           py: 1.2,
           boxShadow: colors.contacts.boxShadow,
-          transition: "transform 0.1s", // плавная анимация нажатия
-          "&:hover": {
-            background: colors.contacts.buttonColor, // убран hover
-          },
-          "&:active": {
-            background: colors.contacts.buttonColor,
-            transform: "scale(0.97)", // лёгкая анимация нажатия
-          },
-          "&.Mui-disabled": {
-            background: colors.contacts.buttonColor,
-            color: colors.contacts.color,
-            boxShadow: colors.contacts.boxShadow,
-          },
           position: "relative",
         }}
       >
-        {loading ? <ThemedCircularProgress size={24} /> : "Сохранить"}
+        {loading ? <ThemedCircularProgress size={24} /> : "Сохранить контакт"}
       </Button>
     </Box>
   );

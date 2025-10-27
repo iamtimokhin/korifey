@@ -17,7 +17,7 @@ export default function Partners() {
   const [selectedPartner, setSelectedPartner] = useState(null);
   const [loading, setLoading] = useState(false);
   const [loadingVisible, setLoadingVisible] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(2); // показываем по 2 партнера
+  const [visibleCount, setVisibleCount] = useState(2);
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
 
@@ -31,68 +31,89 @@ export default function Partners() {
     setOpen(false);
   };
 
-  const handleShowMore = () => {
-    setVisibleCount((prev) => prev + 2);
-  };
-
-  const handleHide = () => {
-    setVisibleCount(2);
-  };
+  const handleShowMore = () => setVisibleCount((prev) => prev + 2);
+  const handleHide = () => setVisibleCount(2);
 
   return (
     <Box sx={{ mb: 4 }}>
       <Typography
         variant="subtitle1"
         mt={1.5}
-        mb={2}
+        mb={1}
         fontWeight="bold"
         color={colors.profileHeader.typographyColor}
         sx={{ textAlign: "center" }}
       >
-        Галерея партнёров <span>{partnersData.length}</span>
+        Наша команда: <span>{partnersData.length} человек</span>
       </Typography>
 
-      <ImageList cols={2} gap={12}>
+      <Typography
+        variant="body2"
+        sx={{
+          textAlign: "center",
+          color: colors.profileHeader.typographyColor,
+          mb: 2,
+        }}
+      >
+        Чтобы связаться с сотрудником, кликните по фотографии
+      </Typography>
+
+      <ImageList cols={2} gap={10} sx={{ width: "100%", height: "auto" }}>
         {partnersData.slice(0, visibleCount).map((partner) => (
           <ImageListItem key={partner.id}>
             <Box
-              onClick={() => handleOpen(partner)}
               sx={{
+                width: 100,
+                height: 100,
+                mx: "auto",
+                p: "2px",
+                borderRadius: "50%",
+                background: colors.profileHeader.boxBackground,
                 cursor: "pointer",
-                borderRadius: 2,
-                overflow: "hidden",
-                textAlign: "center",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
+              onClick={() => handleOpen(partner)}
             >
               <Box
                 component="img"
                 src={partner.img}
                 alt={partner.name}
+                loading="lazy"
                 sx={{
                   width: "100%",
-                  height: 160,
+                  height: "100%",
                   objectFit: "cover",
-                  borderRadius: 2,
+                  borderRadius: "50%",
                 }}
               />
-              <Typography variant="subtitle2" fontWeight="bold" noWrap mt={1}>
-                {partner.name}
-              </Typography>
-              <Typography variant="caption" sx={{ opacity: 0.7 }}>
-                {partner.role}
-              </Typography>
             </Box>
+
+            <Typography
+              variant="subtitle2"
+              fontWeight="bold"
+              mt={0.5}
+              fontSize="0.85rem"
+              textAlign="center"
+            >
+              {partner.name}
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{ opacity: 0.7, display: "block", textAlign: "center" }}
+            >
+              {partner.role}
+            </Typography>
           </ImageListItem>
         ))}
       </ImageList>
 
       <Box sx={{ textAlign: "center", mt: 2, mb: -2 }}>
-        {/* Кнопка "Показать еще" */}
-        {/* Кнопка "Показать еще" */}
         {visibleCount < partnersData.length && (
           <Button
             fullWidth
-            disabled={loading} // блокировка
+            disabled={loading}
             onClick={() => {
               setLoading(true);
               setTimeout(() => {
@@ -124,11 +145,10 @@ export default function Partners() {
           </Button>
         )}
 
-        {/* Кнопка "Скрыть" */}
         {visibleCount > 2 && (
           <Button
             fullWidth
-            disabled={loadingVisible} // блокировка
+            disabled={loadingVisible}
             onClick={() => {
               setLoadingVisible(true);
               setTimeout(() => {
@@ -145,14 +165,6 @@ export default function Partners() {
               py: 1.2,
               mb: 1,
               boxShadow: colors.contacts.boxShadow,
-              transition: "transform 0.1s",
-              "&:hover": { background: colors.contacts.buttonColor },
-              "&:active": { transform: "scale(0.97)" },
-              "&.Mui-disabled": {
-                background: colors.contacts.buttonColor,
-                color: colors.contacts.color,
-                boxShadow: colors.contacts.boxShadow,
-              },
               position: "relative",
             }}
           >
@@ -160,6 +172,8 @@ export default function Partners() {
           </Button>
         )}
       </Box>
+
+      {/* Свайпер партнёра */}
       {selectedPartner && (
         <PartnerImageSwiper
           open={open}
@@ -170,6 +184,11 @@ export default function Partners() {
           role={selectedPartner.role}
           description={selectedPartner.description}
           link={selectedPartner.link}
+          contact={{
+            name: selectedPartner.name,
+            phone: selectedPartner.tel,
+            email: selectedPartner.email,
+          }}
         />
       )}
     </Box>

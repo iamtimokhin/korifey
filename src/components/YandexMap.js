@@ -8,7 +8,8 @@ function YandexMapEmbed() {
   const { currentTheme } = useContext(ThemeContext);
   const colors = themes[currentTheme];
 
-  const mapCoords = "60.591402,56.841379";
+  const mapCoords = "60.609171,56.816153";
+
   const zoom = 16;
   const mapSrc = `https://yandex.ru/map-widget/v1/?ll=${mapCoords}&z=${zoom}&l=map&pt=${mapCoords},pm2rdm`;
 
@@ -39,7 +40,7 @@ function YandexMapEmbed() {
         color={colors.profileHeader.typographyColor || "#fff"}
         sx={{ textAlign: "center" }}
       >
-        Мое местоположение
+        Наш офис
       </Typography>
 
       <Button
@@ -89,7 +90,15 @@ function YandexMapEmbed() {
               color={colors.profileHeader.typographyColor || "#ccc"}
               sx={{ textAlign: "center", opacity: 0.9 }}
             >
-              Адрес: Екатеринбург, ул. Февральской Революции, 15
+              Адрес: г.Екатеринбург, ул. Фурманова, 52
+            </Typography>
+            <Typography
+              variant="body2"
+              mt={1}
+              color={colors.profileHeader.typographyColor || "#ccc"}
+              sx={{ textAlign: "center", opacity: 0.9 }}
+            >
+              Часы работы: с 10:00 до 18:00
             </Typography>
 
             <Box

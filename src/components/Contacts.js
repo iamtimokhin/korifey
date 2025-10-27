@@ -28,12 +28,23 @@ function Contacts() {
     <>
       <Typography
         variant="subtitle1"
-        mb={1.5}
+        mb={1}
         fontWeight="bold"
         color={colors.profileHeader.typographyColor}
         sx={{ textAlign: "center" }}
       >
-        Мои контакты
+        Наши контакты
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{
+          textAlign: "center",
+          color: colors.profileHeader.typographyColor,
+          mb: 2,
+        }}
+      >
+        Все наши объекты на Авито, Циан, Домклик и сайте Корифей в одном месте —
+        а контакты можно сохранить мгновенно
       </Typography>
 
       <Stack spacing={1} sx={{ mb: 3 }}>
@@ -51,19 +62,6 @@ function Contacts() {
               borderRadius: 3,
               py: 1.2,
               boxShadow: colors.contacts.boxShadow,
-              transition: "transform 0.1s", // плавная анимация нажатия
-              "&:hover": {
-                background: colors.contacts.buttonColor, // убрали эффект hover
-              },
-              "&:active": {
-                background: colors.contacts.buttonColor,
-                transform: "scale(0.97)", // лёгкая анимация нажатия
-              },
-              "&.Mui-disabled": {
-                background: colors.contacts.buttonColor,
-                color: colors.contacts.color,
-                boxShadow: colors.contacts.boxShadow,
-              },
             }}
           >
             {loadingIndex === index ? (

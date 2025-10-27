@@ -1,6 +1,6 @@
 {
-  "name": "taplink-project",
-  "homepage": "https://timzone.ru",
+  "name": "korifey-visit",
+  "homepage": "https://korifey.timzone.ru",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "framer-motion": "^12.23.12",
+    "qrcode.react": "^4.2.0",
     "react": "^19.1.1",
     "react-canvas-confetti": "^2.0.7",
     "react-countup": "^6.5.3",

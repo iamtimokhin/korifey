@@ -21,6 +21,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
   link,
   status,
   avito,
+  site,
 }) {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
@@ -193,12 +194,6 @@ const VisitSwiper = React.memo(function VisitSwiper({
                 textTransform: "none",
                 borderRadius: 3,
                 boxShadow: colors.contacts.boxShadow,
-                transition: "transform 0.1s",
-                "&:hover": { background: colors.contacts.buttonColor },
-                "&:active": {
-                  background: colors.contacts.buttonColor,
-                  transform: "scale(0.97)",
-                },
                 mb: 1,
               }}
             >
@@ -219,15 +214,30 @@ const VisitSwiper = React.memo(function VisitSwiper({
                 textTransform: "none",
                 borderRadius: 3,
                 boxShadow: colors.contacts.boxShadow,
-                transition: "transform 0.1s",
-                "&:hover": { background: colors.contacts.buttonColor },
-                "&:active": {
-                  background: colors.contacts.buttonColor,
-                  transform: "scale(0.97)",
-                },
+                mb: 1,
               }}
             >
               Перейти на Avito
+            </Button>
+          )}
+          {site && (
+            <Button
+              href={site}
+              target="_blank"
+              sx={{
+                width: "80%",
+                maxWidth: 320,
+                minHeight: 48,
+                background: colors.contacts.buttonColor,
+                color: colors.contacts.color,
+                fontWeight: "bold",
+                textTransform: "none",
+                borderRadius: 3,
+                boxShadow: colors.contacts.boxShadow,
+                mb: 1,
+              }}
+            >
+              Перейти в визитку
             </Button>
           )}
         </Box>

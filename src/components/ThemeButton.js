@@ -36,7 +36,7 @@ function ThemeButton() {
         color={colors.profileHeader.typographyColor}
         sx={{ textAlign: "center" }}
       >
-        Сменить тему визитки
+        Сменить оформление визитки
       </Typography>
       <Button
         onClick={handleClick}
@@ -62,7 +62,7 @@ function ThemeButton() {
           position: "relative",
         }}
       >
-        {loading ? <ThemedCircularProgress size={24} /> : "Сменить тему"}
+        {loading ? <ThemedCircularProgress size={24} /> : "Сменить оформление"}
       </Button>
     </Box>
   );

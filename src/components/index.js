@@ -15,3 +15,4 @@ export { default as CenterAlert } from "./CenterAlert";
 export { default as YandexMapEmbed } from "./YandexMap";
 export { default as ScrollToTopFab } from "./ScrollToTopFab";
 export { default as ScrollProgress } from "./ScrollProgress";
+export { default as QRSwiper } from "./QRSwiper";
