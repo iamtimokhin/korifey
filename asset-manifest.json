@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/korifey-visit/static/css/main.e6c13ad2.css",
-    "main.js": "/korifey-visit/static/js/main.4b200f0b.js",
-    "static/js/453.209e6d3a.chunk.js": "/korifey-visit/static/js/453.209e6d3a.chunk.js",
-    "static/media/PhilippTimokhin.jpg": "/korifey-visit/static/media/PhilippTimokhin.5e3a03b13265f710c181.jpg",
-    "static/media/Burceva_Natalya_Pavlovna.png": "/korifey-visit/static/media/Burceva_Natalya_Pavlovna.1fdcc75980e38caaedd8.png",
-    "static/media/Sazonova_Irina_Vladimirovna.png": "/korifey-visit/static/media/Sazonova_Irina_Vladimirovna.611b3d8099499300d27b.png",
-    "static/media/Shirikalova_Olga_Nikoevna.png": "/korifey-visit/static/media/Shirikalova_Olga_Nikoevna.c5ce6819cda9a7c4061f.png",
-    "static/media/Otegov_Kirill_Vladimirovich.png": "/korifey-visit/static/media/Otegov_Kirill_Vladimirovich.0a871defa46ce5bafcea.png",
-    "static/media/Perevalova_Olga_Nikolaevna.png": "/korifey-visit/static/media/Perevalova_Olga_Nikolaevna.3c961e9b2ace3d7e1ee9.png",
-    "static/media/Sannikov_Oleg_Vladimirovich.png": "/korifey-visit/static/media/Sannikov_Oleg_Vladimirovich.10ff8411ae7385da511c.png",
-    "static/media/Lunau_Natalya_Aleksandrovna.png": "/korifey-visit/static/media/Lunau_Natalya_Aleksandrovna.a66bcf1e188e8e91329f.png",
-    "static/media/Selezneva_Tatyana_Valerevna.png": "/korifey-visit/static/media/Selezneva_Tatyana_Valerevna.b84c61f47ee964c5182f.png",
-    "static/media/Batyaeva_Kristina_Aleksandrovna.png": "/korifey-visit/static/media/Batyaeva_Kristina_Aleksandrovna.f95e2b1c87ec50b48d6b.png",
-    "static/media/Samofeeva_Ekaterina_Vladimirovna.png": "/korifey-visit/static/media/Samofeeva_Ekaterina_Vladimirovna.796adba873851839d3c7.png",
-    "static/media/Markina_Irina_Aleksandrovna.png": "/korifey-visit/static/media/Markina_Irina_Aleksandrovna.812225d415748ed8b17d.png",
-    "static/media/korifey_sublogo.png": "/korifey-visit/static/media/korifey_sublogo.24080db6bea8518f2829.png",
-    "static/media/korifey_logo.png": "/korifey-visit/static/media/korifey_logo.cf1748388244d1d9d7a1.png",
-    "index.html": "/korifey-visit/index.html",
-    "static/media/verify.svg": "/korifey-visit/static/media/verify.b9d2d9ae73e9d4b6feb453df0ec73424.svg",
-    "main.e6c13ad2.css.map": "/korifey-visit/static/css/main.e6c13ad2.css.map",
-    "main.4b200f0b.js.map": "/korifey-visit/static/js/main.4b200f0b.js.map",
-    "453.209e6d3a.chunk.js.map": "/korifey-visit/static/js/453.209e6d3a.chunk.js.map"
+    "main.css": "/korifey/static/css/main.e6c13ad2.css",
+    "main.js": "/korifey/static/js/main.ae6fcc74.js",
+    "static/js/453.209e6d3a.chunk.js": "/korifey/static/js/453.209e6d3a.chunk.js",
+    "static/media/PhilippTimokhin.jpg": "/korifey/static/media/PhilippTimokhin.5e3a03b13265f710c181.jpg",
+    "static/media/Burceva_Natalya_Pavlovna.png": "/korifey/static/media/Burceva_Natalya_Pavlovna.1fdcc75980e38caaedd8.png",
+    "static/media/Sazonova_Irina_Vladimirovna.png": "/korifey/static/media/Sazonova_Irina_Vladimirovna.611b3d8099499300d27b.png",
+    "static/media/Shirikalova_Olga_Nikoevna.png": "/korifey/static/media/Shirikalova_Olga_Nikoevna.c5ce6819cda9a7c4061f.png",
+    "static/media/Otegov_Kirill_Vladimirovich.png": "/korifey/static/media/Otegov_Kirill_Vladimirovich.0a871defa46ce5bafcea.png",
+    "static/media/Perevalova_Olga_Nikolaevna.png": "/korifey/static/media/Perevalova_Olga_Nikolaevna.3c961e9b2ace3d7e1ee9.png",
+    "static/media/Sannikov_Oleg_Vladimirovich.png": "/korifey/static/media/Sannikov_Oleg_Vladimirovich.10ff8411ae7385da511c.png",
+    "static/media/Lunau_Natalya_Aleksandrovna.png": "/korifey/static/media/Lunau_Natalya_Aleksandrovna.a66bcf1e188e8e91329f.png",
+    "static/media/Selezneva_Tatyana_Valerevna.png": "/korifey/static/media/Selezneva_Tatyana_Valerevna.b84c61f47ee964c5182f.png",
+    "static/media/Batyaeva_Kristina_Aleksandrovna.png": "/korifey/static/media/Batyaeva_Kristina_Aleksandrovna.f95e2b1c87ec50b48d6b.png",
+    "static/media/Samofeeva_Ekaterina_Vladimirovna.png": "/korifey/static/media/Samofeeva_Ekaterina_Vladimirovna.796adba873851839d3c7.png",
+    "static/media/Markina_Irina_Aleksandrovna.png": "/korifey/static/media/Markina_Irina_Aleksandrovna.812225d415748ed8b17d.png",
+    "static/media/korifey_sublogo.png": "/korifey/static/media/korifey_sublogo.24080db6bea8518f2829.png",
+    "static/media/korifey_logo.png": "/korifey/static/media/korifey_logo.cf1748388244d1d9d7a1.png",
+    "index.html": "/korifey/index.html",
+    "static/media/verify.svg": "/korifey/static/media/verify.b9d2d9ae73e9d4b6feb453df0ec73424.svg",
+    "main.e6c13ad2.css.map": "/korifey/static/css/main.e6c13ad2.css.map",
+    "main.ae6fcc74.js.map": "/korifey/static/js/main.ae6fcc74.js.map",
+    "453.209e6d3a.chunk.js.map": "/korifey/static/js/453.209e6d3a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.4b200f0b.js"
+    "static/js/main.ae6fcc74.js"
   ]
 }
